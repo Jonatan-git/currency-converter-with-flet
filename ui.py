@@ -6,9 +6,9 @@ def app_ui(page: ft.Page):
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.theme_mode = ft.ThemeMode.LIGHT
 
-    base_input = ft.TextField(label="Mata uang asal (contoh: USD)")
-    target_input = ft.TextField(label="Mata uang tujuan (contoh: IDR)")
-    amount_input = ft.TextField(label="Jumlah uang", input_filter=ft.NumbersOnlyInputFilter())
+    base_input = ft.TextField(label="Base Currency (example: USD)")
+    target_input = ft.TextField(label="Converting to (example: IDR)")
+    amount_input = ft.TextField(label="the amount of money", input_filter=ft.NumbersOnlyInputFilter())
     result_text = ft.Text(value="", size=18, color="green")
 
     def convert(e):
@@ -17,14 +17,14 @@ def app_ui(page: ft.Page):
         try:
             amount = float(amount_input.value)
         except ValueError:
-            result_text.value = "⚠️ Jumlah tidak valid."
+            result_text.value = "⚠️ value not valid"
             page.update()
             return
 
         result_text.value = convert_currency(base, target, amount)
         page.update()
 
-    convert_btn = ft.ElevatedButton("Konversi", on_click=convert)
+    convert_btn = ft.ElevatedButton("Conversion", on_click=convert)
 
     page.add(
         ft.Column(

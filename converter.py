@@ -7,15 +7,15 @@ def convert_currency(base_currency, target_currency, amount):
     response = requests.get(url)
 
     if response.status_code != 200:
-        return "❌ Gagal mengambil data dari API."
+        return "❌ Cannot Get API data."
 
     data = response.json()
     if "conversion_rates" not in data:
-        return "❌ Format data API tidak sesuai."
+        return "❌ API Format did not match."
 
     rates = data["conversion_rates"]
     if target_currency not in rates:
-        return "❌ Mata uang tujuan tidak ditemukan di API."
+        return "❌ Currency to convert cannot be found in API."
 
     rate = rates[target_currency]
     result = amount * rate
