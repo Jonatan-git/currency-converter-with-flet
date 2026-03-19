@@ -17,7 +17,7 @@ def app_ui(page: ft.Page):
         try:
             amount = float(amount_input.value)
         except ValueError:
-            result_text.value = "⚠️ value not valid"
+            result_text.value = "value not valid"
             page.update()
             return
 
@@ -29,7 +29,7 @@ def app_ui(page: ft.Page):
     page.add(
         ft.Column(
             [
-                ft.Text("💱 Currency Converter", size=24, weight="bold"),
+                ft.Text("Currency Converter", size=24, weight="bold"),
                 base_input,
                 target_input,
                 amount_input,
